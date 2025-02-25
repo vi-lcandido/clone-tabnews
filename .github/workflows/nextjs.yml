@@ -74,7 +74,15 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+        run: |
+          ${{ steps.detect-package-manager.outputs.runner }} next build
+          # Verifique se a pasta out foi criada
+          ls -la
+          # Se não houver pasta out, algo está errado
+          if [ ! -d "out" ]; then
+            echo "A pasta 'out' não foi criada. Verifique a configuração do Next.js."
+            exit 1
+          fi
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

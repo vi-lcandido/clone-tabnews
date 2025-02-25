@@ -4,10 +4,10 @@
   "description": "Um projeto para treinar programação",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
+  "dev": "next dev",
+  "build": "next build && next export",
+  "start": "next start"
+},
   "author": "",
   "license": "MIT",
   "dependencies": {
